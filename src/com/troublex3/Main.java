@@ -15,7 +15,8 @@ public class Main {
                 new float[] {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f });
         //newGraph.loadGraph(new Character[][] {{'A','B'}, {'B','C'}}, new float[] {1.0f,2.0f});
         //newGraph.printGraph();
-        newGraph.printDFSFrom('G');
+//        newGraph.printDFSFrom('G');
+        newGraph.printBFSFrom('G');
     }
 
     static void depthFirstTraversal(int map[][]) {

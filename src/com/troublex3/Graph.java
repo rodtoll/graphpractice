@@ -1,9 +1,8 @@
 package com.troublex3;
 
-import java.util.Enumeration;
-import java.util.HashSet;
-import java.util.Hashtable;
-import java.util.Set;
+import com.sun.jdi.Value;
+
+import java.util.*;
 
 public class Graph<T> {
 
@@ -63,6 +62,11 @@ public class Graph<T> {
         printDFS(firstNode, new HashSet<T>());
     }
 
+    public void printBFSFrom(T start) {
+        GraphNode<T> firstNode = nodes.get(start);
+        printBFS(firstNode);
+    }
+
     public void printDFS() {
         System.out.println("Printing graph DFS");
         HashSet<T> visitedNodes = new HashSet<T>();
@@ -74,7 +78,42 @@ public class Graph<T> {
         printDFS(firstNode, visitedNodes);
     }
 
-    public void printBFS() {
+    public boolean BFS(GraphNode<T> startNode, GraphNode destination) {
+        LinkedList<GraphNode> nextToVisit = new LinkedList<>();
+        System.out.println("Printing graph BFS");
+        HashSet<T> visitedNodes = new HashSet<>();
+        nextToVisit.add(startNode);
+        while(!nextToVisit.isEmpty()) {
+            GraphNode<T> node = nextToVisit.remove();
+            if (node == destination) {
+                return true;
+            }
+            if (visitedNodes.contains(node.Value)) {
+                continue;
+            }
+            visitedNodes.add(node.Value);
+            for (GraphEdge<T> child : node.Edges) {
+                nextToVisit.add(child.getOtherEnd(node));
+            }
+        }
+        return false;
+    }
 
+    public void printBFS(GraphNode<T> startNode) {
+        LinkedList<GraphNode> nextToVisit = new LinkedList<>();
+        System.out.println("Printing graph BFS");
+        HashSet<T> visitedNodes = new HashSet<>();
+        nextToVisit.add(startNode);
+        while(!nextToVisit.isEmpty()) {
+            GraphNode<T> node = nextToVisit.remove();
+            if (visitedNodes.contains(node.Value)) {
+                continue;
+            }
+            node.print();
+            visitedNodes.add(node.Value);
+            for (GraphEdge<T> child : node.Edges) {
+                nextToVisit.add(child.getOtherEnd(node));
+            }
+        }
     }
 }
