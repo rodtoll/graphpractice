@@ -58,6 +58,11 @@ public class Graph<T> {
         }
     }
 
+    public void printDFSFrom(T start) {
+        GraphNode<T> firstNode = nodes.get(start);
+        printDFS(firstNode, new HashSet<T>());
+    }
+
     public void printDFS() {
         System.out.println("Printing graph DFS");
         HashSet<T> visitedNodes = new HashSet<T>();
