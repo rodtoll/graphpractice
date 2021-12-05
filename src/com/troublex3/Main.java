@@ -10,9 +10,12 @@ public class Main {
     public static void main(String[] args) {
 
         Graph<Character> newGraph = new Graph();
-        newGraph.loadGraph(new Character[][] {{'A','B'}, {'B','C'}}, new float[] {1.0f,2.0f});
+        newGraph.loadGraph(new Character[][] {{'P','H'}, {'P','A'}, {'A','R'}, {'R','G'},
+                {'G','B'}, {'B','D'}, {'D','F'}, {'F','S'},{'F','B'}, {'S','A'}, {'S','H'}},
+                new float[] {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f });
+        //newGraph.loadGraph(new Character[][] {{'A','B'}, {'B','C'}}, new float[] {1.0f,2.0f});
         newGraph.printGraph();
-        newGraph.printDFS();
+        //newGraph.printDFS();
     }
 
     static void depthFirstTraversal(int map[][]) {

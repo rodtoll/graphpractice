@@ -16,7 +16,7 @@ public class GraphNode<T> {
         System.out.println("Node: " + Value);
         System.out.println("Edges..");
         for (GraphEdge<T> edge : Edges) {
-            System.out.println("0: " + edge.Edges.get(0).Value + " 1: " + edge.Edges.get(1).Value + " W: " + edge.Weight);
+            System.out.println("["+Value+"]<->[" + edge.getOtherEnd(this).Value+"] => Weight: "+ edge.Weight);
         }
         System.out.println();
     }
